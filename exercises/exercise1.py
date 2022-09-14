@@ -17,15 +17,16 @@ class Circle:
         - No utilizar Properties
         - Utilizar Type Hints en todos los métodos y variables
     """
+
 class Circle:
     def __init__(self, radio:float):
         self.radio: float = radio
 
     def area(self):
-        return 3.14 * self.radio
+        return round(pi * (self.radio ** 2), 2)
 
     def perimetro(self):
-        return  2 * 3.14 * self.radio
+        return  round(2 * pi * self.radio, 2)
     
 
 
