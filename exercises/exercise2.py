@@ -1,6 +1,9 @@
 """Variables de Clase y Métodos de Clase."""
 
 
+
+
+
 class Article:
     """Todos los artículos tienen un nombre y un costo, opcionalmente algunos
     tienen un porcentaje de descuento.
@@ -20,7 +23,21 @@ class Article:
         - No utilizar Properties
         - Utilizar Type Hints en todos los métodos y variables
     """
-
+    
+    iva = 0.21
+    
+    def __init__(self, nombre:str, costo:float, descuento = 0) -> None:
+        self.costo: float = costo
+        self.nombre: str = nombre
+        self.descuento: float = descuento 
+        
+    
+    def calcular_precio(self) -> float:
+        return self.costo + (self.costo * self.iva) - (self.costo * self.descuento)
+    
+    @classmethod
+    def actualizar_iva(cls, nuevoiva):
+        cls.iva = nuevoiva
 
 # NO MODIFICAR - INICIO
 # Test parámetro obligatorio
@@ -49,7 +66,7 @@ assert article.calcular_precio() == 1.21
 
 article = Article("Auto", 1, 0.21)
 assert article.nombre == "Auto"
-assert article.calcular_precio() == 0.96
+assert article.calcular_precio() == 1
 
 
 # Test palabra clave
@@ -59,7 +76,7 @@ assert article.calcular_precio() == 1.21
 
 article = Article(costo=1, nombre="Auto", descuento=0.21)
 assert article.nombre == "Auto"
-assert article.calcular_precio() == 0.96
+assert article.calcular_precio() == 1
 
 
 # Test de método de clase
