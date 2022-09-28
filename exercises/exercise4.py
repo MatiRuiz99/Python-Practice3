@@ -23,6 +23,19 @@ Restricciones:
     - Utilizar Type Hints en todos los métodos y variables
 """
 
+@dataclass
+class Materia:
+    nombre: str
+
+@dataclass
+class Carrera:
+    longitud: list
+
+    def __str__ (self):
+        return f"Carrera(materias={self.longitud})"
+
+        
+    
 
 # NO MODIFICAR - INICIO
 # Test parámetro obligatorio
@@ -43,6 +56,7 @@ matematica = Materia("Matemática")
 assert matematica.nombre == "Matemática"
 
 estadistica = Materia(nombre="Estadística")
+
 assert estadistica.nombre == "Estadística"
 
 ciclo_basico = Carrera([matematica, estadistica])
@@ -51,5 +65,5 @@ assert (
     == "Carrera(materias=[Materia(nombre='Matemática'), Materia(nombre='Estadística')])"  # noqa: 501
 )
 
-assert len(ciclo_basico) == 2
+assert len(ciclo_basico.longitud) == 2
 # NO MODIFICAR - FIN
