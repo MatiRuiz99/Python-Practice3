@@ -33,7 +33,7 @@ class Article:
         
     
     def calcular_precio(self) -> float:
-        return self.costo + (self.costo * self.iva) - (self.costo * self.descuento)
+        return round((self.costo + (self.costo * self.iva)) - ((self.costo + (self.costo * self.iva)) * self.descuento),2)
     
     @classmethod
     def actualizar_iva(cls, nuevoiva):
@@ -66,7 +66,7 @@ assert article.calcular_precio() == 1.21
 
 article = Article("Auto", 1, 0.21)
 assert article.nombre == "Auto"
-assert article.calcular_precio() == 1
+assert article.calcular_precio() == 0.96
 
 
 # Test palabra clave
@@ -76,7 +76,7 @@ assert article.calcular_precio() == 1.21
 
 article = Article(costo=1, nombre="Auto", descuento=0.21)
 assert article.nombre == "Auto"
-assert article.calcular_precio() == 1
+assert article.calcular_precio() == 0.96
 
 
 # Test de método de clase
