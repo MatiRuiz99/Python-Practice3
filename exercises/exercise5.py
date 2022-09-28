@@ -38,9 +38,24 @@ from dataclasses import dataclass
 from typing import List
 
 
+@dataclass
+class Contribuyente(ABC):
+    contribuyentes: list
+
+@dataclass
+class Empleado(Contribuyente):
+    sueldo: float
+
+
+@dataclass
+class Monotributista(Contribuyente):
+    sueldo: float
+
 def calcular_sueldos(contribuyentes: List[Contribuyente]):
     """Data una lista de contribuyentes, devuelve una lista de los sueldos de
     cada uno."""
+
+
 
 
 # NO MODIFICAR - INICIO
